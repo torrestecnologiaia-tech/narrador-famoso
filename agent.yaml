@@ -1,0 +1,23 @@
+# agent.yaml - Configuração do agente AntiGravity
+agent:
+  name: "narrador-famoso-vozes"
+  display_name: "Narrador com Vozes Famosas"
+  description: "Agente especializado em narração com vozes de celebridades"
+  
+  # Capacidades do agente
+  capabilities:
+    - voice_synthesis
+    - voice_cloning
+    - emotion_detection
+    - multi_turn_conversation
+    
+  # Vozes disponíveis
+  voices:
+    - name: "Morgan Freeman"
+      provider: "elevenlabs"
+      voice_id: "morgan_freeman_v2"
+      language: "pt-BR"
+    - name: "Scarlett Johansson" 
+      provider: "elevenlabs"
+      voice_id: "scarlett_johansson_v1"
+      language: "pt-BR"
