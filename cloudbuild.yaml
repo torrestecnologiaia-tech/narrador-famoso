@@ -1,0 +1,22 @@
+# cloudbuild.yaml
+steps:
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args:
+      - 'gcloud'
+      - 'antigravity'
+      - 'deploy'
+      - '--agent=./agent.yaml'
+      - '--region=us-central1'
+      
+  - name: 'node:16'
+    args:
+      - 'npm'
+      - 'run'
+      - 'build'
+      
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/narrador-antigravity'
+      - '.'
