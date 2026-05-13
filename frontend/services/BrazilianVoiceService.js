@@ -1,11 +1,13 @@
 // services/BrazilianVoiceService.js
 import { brazilianFamousVoices } from '../config/brazilianVoices';
+import SoundtrackService from './SoundtrackService';
 
 class BrazilianVoiceService {
   constructor() {
     this.voiceProfiles = brazilianFamousVoices;
     this.currentVoice = null;
-    this.audioContext = null; // Inicializado sob demanda para evitar problemas de política de áudio
+    this.currentTrack = null;
+    this.audioContext = null;
   }
   
   _getAudioContext() {
@@ -34,6 +36,9 @@ class BrazilianVoiceService {
     if (!voice) {
       throw new Error('Voz não encontrada');
     }
+
+    const trackId = options.trackId || voice.config_audio.trilha_padrao;
+    const track = trackId ? SoundtrackService.tracks[trackId] : null;
     
     // Configurações de áudio baseadas no perfil
     const audioConfig = {
@@ -47,16 +52,18 @@ class BrazilianVoiceService {
     // Chamar API de síntese de voz
     const audioBlob = await this.synthesizeVoice(text, audioConfig);
     
-    // Adicionar efeitos característicos
-    const enhancedAudio = await this.applyVoiceEffects(audioBlob, voice);
+    // Adicionar efeitos característicos e mixagem
+    const enhancedAudio = await this.applyVoiceEffects(audioBlob, voice, track);
     
     return {
       audio: enhancedAudio,
       voice: voice,
+      track: track,
       metadata: {
         nome: voice.nome,
         categoria: voice.categoria,
-        frase_famosa: voice.frases_famosas[0]
+        frase_famosa: voice.frases_famosas[0],
+        trilha_usada: track ? track.name : 'Nenhuma'
       }
     };
   }
