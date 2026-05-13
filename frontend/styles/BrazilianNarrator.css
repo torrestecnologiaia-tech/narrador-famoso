@@ -254,6 +254,40 @@ textarea:focus {
   cursor: not-allowed;
 }
 
+/* Track Selector */
+.track-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.selector-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.track-select {
+  background: #020617;
+  color: white;
+  border: 1px solid #1e293b;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  flex: 1;
+  cursor: pointer;
+  outline: none;
+  transition: var(--transition);
+}
+
+.track-select:hover {
+  border-color: var(--primary);
+}
+
 /* Animations */
 @keyframes fadeInDown {
   from { opacity: 0; transform: translateY(-20px); }
