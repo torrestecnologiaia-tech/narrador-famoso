@@ -37,7 +37,8 @@ export const brazilianFamousVoices = {
         speed: 1.2,
         timbre: 'agudo',
         intensidade: 'alta',
-        vibrato: true
+        vibrato: true,
+        trilha_padrao: 'estadio_lotado'
       }
     },
     {
@@ -115,7 +116,8 @@ export const brazilianFamousVoices = {
         speed: 1.1,
         timbre: 'anasalado_caracteristico',
         risada: 'caracteristica',
-        bordao: true
+        bordao: true,
+        trilha_padrao: 'auditorio_sbt'
       }
     },
     {
@@ -213,7 +215,8 @@ export const brazilianFamousVoices = {
         speed: 0.85,
         timbre: 'gravíssimo',
         ressonancia: 'maxima',
-        pausa_dramatica: true
+        pausa_dramatica: true,
+        trilha_padrao: 'suspense_jornal'
       }
     },
     {
