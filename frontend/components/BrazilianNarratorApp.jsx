@@ -2,11 +2,13 @@
 import React, { useState } from 'react';
 import { useBrazilianVoices } from '../hooks/useBrazilianVoices';
 import { exemplosNarracao } from '../config/exemplosNarracao';
+import SoundtrackService from '../services/SoundtrackService';
 import '../styles/BrazilianNarrator.css';
 
 export function BrazilianNarratorApp() {
   const { narrate, getAvailableVoices, isLoading } = useBrazilianVoices();
   const [selectedVoice, setSelectedVoice] = useState(null);
+  const [selectedTrack, setSelectedTrack] = useState('auto');
   const [text, setText] = useState('');
   const [theme, setTheme] = useState('futebol');
   
@@ -34,7 +36,10 @@ export function BrazilianNarratorApp() {
     if (!voiceToUse || !textToUse) return;
     
     try {
-        const result = await narrate(textToUse, voiceToUse);
+        const result = await narrate(textToUse, voiceToUse, {
+          trackId: selectedTrack === 'auto' ? null : selectedTrack
+        });
+        
         const audio = new Audio(URL.createObjectURL(result.audio));
         audio.play();
     } catch (error) {
@@ -131,6 +136,22 @@ export function BrazilianNarratorApp() {
                 placeholder="Digite o texto para narração..."
                 maxLength={500}
               />
+              
+              {/* Seletor de Trilha */}
+              <div className="track-selector">
+                <span className="selector-label">🎵 Trilha Sonora:</span>
+                <select 
+                  value={selectedTrack} 
+                  onChange={(e) => setSelectedTrack(e.target.value)}
+                  className="track-select"
+                >
+                  <option value="auto">Mágica (Automática)</option>
+                  <option value="none">Nenhuma (Voz Limpa)</option>
+                  {SoundtrackService.getAvailableTracks().map(track => (
+                    <option key={track.id} value={track.id}>{track.name}</option>
+                  ))}
+                </select>
+              </div>
               
               <button
                 className="generate-btn"
