@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Narrador Famoso - Preview</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #0b1120;
+      color: #f8fafc;
+      font-family: Arial, Helvetica, sans-serif;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .phone {
+      width: min(390px, 100%);
+      min-height: 812px;
+      background: #0f172a;
+      border: 1px solid #1f2a44;
+      border-radius: 32px;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.46);
+      overflow: hidden;
+    }
+
+    .status {
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px;
+      color: #dbeafe;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .screen {
+      padding: 8px 20px 24px;
+    }
+
+    h1 {
+      margin: 8px 0 4px;
+      text-align: center;
+      color: #38bdf8;
+      font-size: 28px;
+      line-height: 1.15;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 0 0 20px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      border: 0;
+      border-radius: 20px;
+      padding: 8px 12px;
+      background: #1e293b;
+      color: #94a3b8;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .tab.active {
+      background: #38bdf8;
+      color: #0f172a;
+    }
+
+    .voices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .voice {
+      min-height: 68px;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      background: #1e293b;
+      padding: 12px;
+    }
+
+    .voice.selected {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.25);
+    }
+
+    .voice strong {
+      display: block;
+      color: #f8fafc;
+      font-size: 14px;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .voice span {
+      color: #38bdf8;
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .panel {
+      background: rgba(30, 41, 59, 0.8);
+      border-radius: 20px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    .input {
+      min-height: 92px;
+      border-radius: 10px;
+      background: #0f172a;
+      color: #64748b;
+      padding: 13px 12px;
+      font-size: 15px;
+      margin-bottom: 15px;
+      border: 1px solid transparent;
+    }
+
+    .label {
+      color: #38bdf8;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .chips {
+      display: flex;
+      gap: 8px;
+      overflow: hidden;
+      margin-bottom: 15px;
+    }
+
+    .chip {
+      white-space: nowrap;
+      border-radius: 15px;
+      border: 1px solid #1e293b;
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 7px 12px;
+      font-size: 10px;
+    }
+
+    .chip.active {
+      background: #38bdf8;
+      border-color: #38bdf8;
+      color: #0f172a;
+      font-weight: 800;
+    }
+
+    .generate {
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      background: #38bdf8;
+      color: #0f172a;
+      padding: 15px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .result {
+      border-left: 3px solid #38bdf8;
+      border-radius: 10px;
+      background: #111827;
+      padding: 15px;
+      color: #94a3b8;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .hint {
+      max-width: 390px;
+      color: #9ca3af;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-top: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="phone" aria-label="Preview mobile do app Narrador Famoso">
+      <div class="status">
+        <span>18:03</span>
+        <span>5G 89%</span>
+      </div>
+      <div class="screen">
+        <h1>Narrador Famoso</h1>
+        <p class="subtitle">IA + Trilhas Inteligentes</p>
+
+        <div class="tabs">
+          <button class="tab active">JOGADORES</button>
+          <button class="tab">APRESENTADORES</button>
+          <button class="tab">OUTROS</button>
+        </div>
+
+        <div class="voices">
+          <article class="voice selected">
+            <strong>Pele</strong>
+            <span>Jogador Lendario</span>
+          </article>
+          <article class="voice">
+            <strong>Galvao Bueno</strong>
+            <span>Narrador</span>
+          </article>
+          <article class="voice">
+            <strong>Neymar Jr.</strong>
+            <span>Jogador</span>
+          </article>
+        </div>
+
+        <section class="panel">
+          <div class="input">Digite o texto...</div>
+          <div class="label">Trilha de Fundo:</div>
+          <div class="chips">
+            <span class="chip active">Automatica</span>
+            <span class="chip">Sem Trilha</span>
+            <span class="chip">Estadio</span>
+          </div>
+          <button class="generate">Gerar com Trilha</button>
+        </section>
+
+        <section class="result">Pronto para narrar.</section>
+      </div>
+    </section>
+    <p class="hint">Previa estatica baseada na tela atual do React Native. O app real ainda precisa do build Android para rodar no celular.</p>
+  </main>
+</body>
+</html>
